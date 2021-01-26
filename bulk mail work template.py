@@ -19,6 +19,8 @@ for email, name in name_list:
 """
 	message.HTMLBody = html_body
 	message.To = email
+	message.OriginatorDeliveryReportRequested = True # Ticks the delivery receipt box
+	message.Importance = 2 # ssts the importance at HIGH. Change numerical value for normal, high or low importance accordingly with '2' being the highest.
 	# message.Send() ## uncomment if you want to send all the messages
 	sleep(15) # delay after sending the message. in seconds
 
