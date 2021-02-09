@@ -1,0 +1,20 @@
+import win32com.client as client
+import re
+
+outlook = client.Dispatch("Outlook.Application")
+namespace = outlook.GetNamespace("MAPI")
+
+inbox = namespace.GetDefaultFolder(6) # "6" refers to the inbox folder. returns an object
+
+leads_folder = inbox.Folders['name of the sub folder to access'] # refering / accessing the subfolder
+messages = leads_folder.items
+#### Script for parsing the Body of the message parsing for Email using Regex #####
+regexs = re.compile(r'From:(.+?)>')
+ for msg in messages:
+ 	msg.body.encode('utf-8')
+ 	message = str(msg.body)
+ 	match = regexs.search(message)
+ 	if match:
+ 		print(match.group(1) + '>')
+ 	else:
+ 		print(message)[0]
